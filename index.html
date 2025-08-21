@@ -1,92 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--
+  index.html - Attractive single-page portfolio with personal photo
+-->
+<!doctype html>
+<html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catch the Ball</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arman — माझा वेबसाईट पोर्टफोलिओ</title>
+  <meta name="description" content="Arman Shaikh — वेबसाईट डिझाइन व तयार करतो. माझ्या कामाचे साइट्स: Game, Best-game, Masala." />
   <style>
-    body {
-      text-align: center;
-      background: black;
-      color: white;
-      font-family: Arial, sans-serif;
+    :root{
+      --bg:#0b1020; --card:#111b3a; --muted:#9aa3c7; --accent:#5eead4;
     }
-    canvas {
-      background: linear-gradient(to bottom, #001f4d, #000000);
-      display: block;
-      margin: 20px auto;
-      border: 2px solid white;
-    }
-    h2 {
-      margin-top: 15px;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans',Arial; background:linear-gradient(135deg,#0b1020,#1a1f40); color:#e8eef8; line-height:1.6;}
+    .container{max-width:1000px;margin:0 auto;padding:20px}
+    header{display:flex;gap:16px;align-items:center;animation:fadeInDown 1s ease}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+    .logo{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;color:#061022;font-weight:700;font-size:22px;box-shadow:0 0 20px rgba(94,234,212,0.6)}
+    h1{font-size:26px;margin:0;}
+    p.lead{color:var(--muted);margin-top:6px}
+    nav a{color:var(--accent);text-decoration:none;margin-left:16px;font-weight:600;transition:color .3s}
+    nav a:hover{color:#fff}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:30px}
+    .card{background:linear-gradient(160deg,#151b35,#0f1630);padding:20px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.05);transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.8)}
+    .card h3{margin:0 0 10px 0;font-size:20px;color:var(--accent)}
+    .card p{color:var(--muted);margin:0 0 14px 0}
+    .btn{display:inline-block;padding:10px 16px;border-radius:8px;background:var(--accent);color:#041224;text-decoration:none;font-weight:600;transition:background .3s}
+    .btn:hover{background:#3dd5c0}
+
+    .about{display:flex;gap:20px;align-items:center;margin-top:40px;animation:fadeIn 1s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .avatar{flex:0 0 120px}
+    .avatar img{width:120px;height:120px;border-radius:12px;object-fit:cover;box-shadow:0 0 15px rgba(0,0,0,0.6)}
+    .contact a{color:var(--accent);text-decoration:none;font-weight:600}
+
+    section.card{margin-top:40px}
+    footer{margin-top:40px;color:var(--muted);font-size:14px;text-align:center}
+
+    @media(max-width:560px){.about{flex-direction:column;align-items:flex-start}.avatar img{width:90px;height:90px}}
   </style>
 </head>
 <body>
-  <h2>🎮 Catch the Ball - Use ⬅️ ➡️ Arrows</h2>
-  <canvas id="gameCanvas" width="400" height="500"></canvas>
+  <div class="container">
+    <div class="topbar">
+      <header>
+        <div class="logo">AS</div>
+        <div>
+          <h1>Arman Shaikh — वेबसाईट डिझायनर & डेवलपर</h1>
+          <p class="lead">माझे काही प्रोजेक्ट्स खाली आहेत. तुम्हाला तुमची आकर्षक वेबसाईट बनवून घ्यायची असल्यास संपर्क करा.</p>
+        </div>
+      </header>
+      <nav>
+        <a href="#sites">Sites</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
 
-  <!-- 🔊 Sound Files -->
-  <audio id="catchSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
-  <audio id="gameOverSound" src="https://www.fesliyanstudios.com/play-mp3/667"></audio>
+    <section id="sites" class="grid" aria-label="My sites">
+      <article class="card">
+        <h3>Catch the Ball — Game</h3>
+        <p>मजेशीर Canvas गेम — JavaScript वापरून तयार. Play करा आणि share करा.</p>
+        <a class="btn" href="https://arman94081.github.io/game/" target="_blank" rel="noopener">पाहा</a>
+      </article>
+
+      <article class="card">
+        <h3>Best-game</h3>
+        <p>विविध गेम प्रोजेक्ट्स आणि डेमो — आकर्षक UI व मोबाइल-फ्रेंडली डिझाइन.</p>
+        <a class="btn" href="https://arman94081.github.io/best-game/" target="_blank" rel="noopener">पाहा</a>
+      </article>
+
+     
+    </section>
+
+    <section id="about" class="about">
+      <div class="avatar">
+        <img src="WhatsApp%20Image%202025-06-07%20at%201.13.14%20PM.jpeg" alt="  https://instagram.fpnq13-6.
+          fna.fbcdn.net/v/t51.2885-19/495257716_18060483830473730_22942126559220911_n.jpg?efg=eyJ2ZW5jb2RlX
+          3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMxIn0&_nc_ht=instagram.fpnq13-6.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QF_GnAk0RkFW
+          Aa4sTf7Xs64AkumnWlcEM1kOZhaAmT_byF_FBx8zAaXFHhCbVtUrVyATbmMjG4zFk5sIOAeG15H&_nc_ohc=JVnvqyk6uB0Q7kNvwH_zotP&_n
+          c_gid=EAA83NiXRn4vjW9It6L7HQ&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfWeL6PsvRs7xk8jIkUW01f0Kdpja6y7dLpS9-7mAy
+          NWNA&oe=68AD071B&_nc_sid=7a9f4b">
+      </div>
+      <div>
+        <h2>माझ्याबद्दल</h2>
+        <p class="lead">मी Arman Shaikh — छोटे व्यवसाय, विद्यार्थ्यांसाठी आणि प्रोजेक्ट्ससाठी attractive, responsive वेबसाईट तयार करतो.</p>
+        <div class="contact">
+          <p><strong>सेवा:</strong> लँडिंग पेज, पोर्टफोलिओ, ई-कॉमर्स मिनी साईट, गेम पेजेस इ.</p>
+          <p><strong>किंमत:</strong> ₹150–₹750 (प्रोजेक्टवर अवलंबून)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact — संपर्क</h2>
+      <p class="lead">तुमची वेबसाईट तयार करायची आहे का? खालील माध्यमांनी संपर्क साधा.</p>
+      <p><strong>Email:</strong> <a href="mailto:shaikharmanking25s@gmail.com">shaikharmanking25s@gmail.com</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/+918788334863" target="_blank" rel="noopener">+91 8788334863</a></p>
+      <a class="btn" href="mailto:arman@example.com?subject=Website%20Request&body=नमस्कार%20Arman,%0Aमाझे%20नाव:%0Aसाईटचा%20प्रकार:%0Aब्रीफ:%0Aधन्यवाद">साइट बनवा</a>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Arman Shaikh ·
+    </footer>
+  </div>
 
   <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
-
-    let basket = { x: 160, y: 450, width: 80, height: 15, speed: 20 };
-    let ball = { x: Math.random() * 380, y: 0, radius: 10, speed: 3 };
-    let score = 0;
-    let gameOver = false;
-
-    // Sounds
-    const catchSound = document.getElementById("catchSound");
-    const gameOverSound = document.getElementById("gameOverSound");
-
-    function drawBasket() {
-      ctx.fillStyle = "lime";
-      ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
-    }
-
-    function drawBall() {
-      ctx.beginPath();
-      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "red";
-      ctx.fill();
-      ctx.closePath();
-    }
-
-    function updateBall() {
-      ball.y += ball.speed;
-
-      // Catch
-      if (
-        ball.y + ball.radius >= basket.y &&
-        ball.x > basket.x &&
-        ball.x < basket.x + basket.width
-      ) {
-        score++;
-        catchSound.play(); // 🔊 play sound
-        resetBall();
-      }
-
-      // Miss → Direct Game Over
-      if (ball.y > canvas.height) {
-        gameOver = true;
-        gameOverSound.play(); // 🔊 play game over sound
-      }
-    }
-
-    function resetBall() {
-      ball.x = Math.random() * 380;
-      ball.y = 0;
-      ball.speed = 3 + Math.random() * 2;
-    }
-
-    function drawScore() {
-      ctx.fillStyle = "white";
-      ctx.font = "18px Arial";
-      ctx.fillText("Score: " + score, 10, 20);
-    }
-
-    function drawGameOver() {
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
