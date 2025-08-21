@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catch the Ball</title>
+  <style>
+    body {
+      text-align: center;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      background: linear-gradient(to bottom, #001f4d, #000000);
+      display: block;
+      margin: 20px auto;
+      border: 2px solid white;
+    }
+    h2 {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎮 Catch the Ball - Use ⬅️ ➡️ Arrows</h2>
+  <canvas id="gameCanvas" width="400" height="500"></canvas>
+
+  <!-- 🔊 Sound Files -->
+  <audio id="catchSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
+  <audio id="gameOverSound" src="https://www.fesliyanstudios.com/play-mp3/667"></audio>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let basket = { x: 160, y: 450, width: 80, height: 15, speed: 20 };
+    let ball = { x: Math.random() * 380, y: 0, radius: 10, speed: 3 };
+    let score = 0;
+    let gameOver = false;
+
+    // Sounds
+    const catchSound = document.getElementById("catchSound");
+    const gameOverSound = document.getElementById("gameOverSound");
+
+    function drawBasket() {
+      ctx.fillStyle = "lime";
+      ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "red";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function updateBall() {
+      ball.y += ball.speed;
+
+      // Catch
+      if (
+        ball.y + ball.radius >= basket.y &&
+        ball.x > basket.x &&
+        ball.x < basket.x + basket.width
+      ) {
+        score++;
+        catchSound.play(); // 🔊 play sound
+        resetBall();
+      }
+
+      // Miss → Direct Game Over
+      if (ball.y > canvas.height) {
+        gameOver = true;
+        gameOverSound.play(); // 🔊 play game over sound
+      }
+    }
+
+    function resetBall() {
+      ball.x = Math.random() * 380;
+      ball.y = 0;
+      ball.speed = 3 + Math.random() * 2;
+    }
+
+    function drawScore() {
+      ctx.fillStyle = "white";
+      ctx.font = "18px Arial";
+      ctx.fillText("Score: " + score, 10, 20);
+    }
+
+    function drawGameOver() {
