@@ -1,126 +1,665 @@
-<!--
-  index.html - Attractive single-page portfolio with personal photo
--->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arman — माझा वेबसाईट पोर्टफोलिओ</title>
-  <meta name="description" content="Arman Shaikh — वेबसाईट डिझाइन व तयार करतो. माझ्या कामाचे साइट्स: Game, Best-game," />
-  <style>
-    :root{
-      --bg:#0b1020; --card:#111b3a; --muted:#9aa3c7; --accent:#5eead4;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans',Arial; background:linear-gradient(135deg,#0b1020,#1a1f40); color:#e8eef8; line-height:1.6;}
-    .container{max-width:1000px;margin:0 auto;padding:20px}
-    header{display:flex;gap:16px;align-items:center;animation:fadeInDown 1s ease}
-    @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
-    .logo{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;color:#061022;font-weight:700;font-size:22px;box-shadow:0 0 20px rgba(94,234,212,0.6)}
-    h1{font-size:26px;margin:0;}
-    p.lead{color:var(--muted);margin-top:6px}
-    nav a{color:var(--accent);text-decoration:none;margin-left:16px;font-weight:600;transition:color .3s}
-    nav a:hover{color:#fff}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Arman Shaikh",
-  "image": "https://arman94081.github.io/website-develope/arman.jpg",
-  "sameAs": [
-    "https://www.instagram.com/mr_arman_2030s/"
-  ],
-  "url": "https://arman94081.github.io/website-develope/"
-}
-</script>
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:30px}
-    .card{background:linear-gradient(160deg,#151b35,#0f1630);padding:20px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.05);transition:transform .3s,box-shadow .3s}
-    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.8)}
-    .card h3{margin:0 0 10px 0;font-size:20px;color:var(--accent)}
-    .card p{color:var(--muted);margin:0 0 14px 0}
-    .btn{display:inline-block;padding:10px 16px;border-radius:8px;background:var(--accent);color:#041224;text-decoration:none;font-weight:600;transition:background .3s}
-    .btn:hover{background:#3dd5c0}
-
-    .about{display:flex;gap:20px;align-items:center;margin-top:40px;animation:fadeIn 1s ease}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    .avatar{flex:0 0 120px}
-    .avatar img{width:120px;height:120px;border-radius:12px;object-fit:cover;box-shadow:0 0 15px rgba(0,0,0,0.6)}
-    .contact a{color:var(--accent);text-decoration:none;font-weight:600}
-
-    section.card{margin-top:40px}
-    footer{margin-top:40px;color:var(--muted);font-size:14px;text-align:center}
-
-    @media(max-width:560px){.about{flex-direction:column;align-items:flex-start}.avatar img{width:90px;height:90px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arman — वेब डेवलपमेंट एक्स्पर्ट</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b1020;
+            --card: #111b3a;
+            --muted: #9aa3c7;
+            --accent: #5eead4;
+            --accent2: #60a5fa;
+            --accent3: #f472b6;
+            --text: #e8eef8;
+            --gradient: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(94, 234, 212, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 20%);
+        }
+        
+        /* Particle background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            animation: fadeInDown 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #061222;
+            font-weight: 800;
+            font-size: 24px;
+            box-shadow: 0 0 25px rgba(94, 234, 212, 0.7);
+            transition: transform 0.5s ease;
+        }
+        
+        .logo:hover {
+            transform: rotate(360deg);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--muted);
+        }
+        
+        .typing-text {
+            font-size: 1.5rem;
+            height: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        nav a:hover {
+            color: #fff;
+            background: rgba(94, 234, 212, 0.1);
+            box-shadow: 0 0 15px rgba(94, 234, 212, 0.5);
+        }
+        
+        nav a:hover:before {
+            left: 100%;
+        }
+        
+        /* Grid and cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background: linear-gradient(160deg, #151b35, #0f1630);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(94, 234, 212, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+        }
+        
+        .card:hover:before {
+            animation: shine 1.5s linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(45deg) translate(-50%, -50%); }
+            100% { transform: rotate(45deg) translate(50%, 50%); }
+        }
+        
+        .card h3 {
+            margin: 0 0 15px 0;
+            font-size: 22px;
+            color: var(--accent);
+        }
+        
+        .card p {
+            color: var(--muted);
+            margin: 0 0 20px 0;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(94, 234, 212, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            background: var(--gradient);
+            color: #041224;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* About section */
+        .about {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin: 60px 0;
+            animation: fadeIn 1s ease;
+        }
+        
+        .avatar {
+            flex: 0 0 200px;
+            position: relative;
+        }
+        
+        .avatar img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            border: 3px solid var(--accent);
+            transition: all 0.5s ease;
+        }
+        
+        .avatar:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(94, 234, 212, 0.4);
+        }
+        
+        .avatar:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--accent);
+            border-radius: 30px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .avatar:hover:after {
+            opacity: 0.5;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+        }
+        
+        /* Contact section */
+        .contact {
+            background: linear-gradient(160deg, #151b35, #0f1630);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact h2 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            width: 160px;
+        }
+        
+        .contact-option:hover {
+            transform: translateY(-5px);
+            background: rgba(94, 234, 212, 0.1);
+        }
+        
+        .contact-option i {
+            font-size: 30px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--muted);
+            font-size: 14px;
+            position: relative;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient);
+            color: #041224;
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .avatar {
+                margin-bottom: 30px;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-option {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent2);
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="topbar">
-      <header>
-        <div class="logo">AS</div>
-        <div>
-          <h1>Arman Shaikh — वेबसाईट डिझायनर & डेवलपर</h1>
-          <p class="lead">माझे काही प्रोजेक्ट्स खाली आहेत. तुम्हाला तुमची आकर्षक वेबसाईट बनवून घ्यायची असल्यास संपर्क करा.</p>
-        </div>
-      </header>
-      <nav>
-        <a href="#sites">Sites</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div id="particles-js"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">AS</div>
+            <nav>
+                <a href="#sites">प्रकल्प</a>
+                <a href="#about">माझ्याबद्दल</a>
+                <a href="#contact">संपर्क</a>
+                <a href="#services">सेवा</a>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Arman Shaikh</h1>
+            <div class="typing-text" id="typing-text"></div>
+            <p>वेबसाईट डिझाइन आणि डेव्हलपमेंटमध्ये तुमचा विश्वासू साथीदार</p>
+            <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> संपर्क साधा</a>
+        </section>
+        
+        <section id="sites">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--accent);">माझे प्रकल्प</h2>
+            <div class="grid">
+                <article class="card animate">
+                    <h3>Catch the Ball — Game</h3>
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Game</span>
+                        <span class="tag">Canvas</span>
+                    </div>
+                    <p>मजेशीर Canvas गेम — JavaScript वापरून तयार. Play करा आणि share करा.</p>
+                    <a class="btn" href="https://arman94081.github.io/game/" target="_blank" rel="noopener">
+                        <i class="fas fa-gamepad"></i> पाहा
+                    </a>
+                </article>
+
+                <article class="card animate">
+                    <h3>Best-game</h3>
+                    <div class="tags">
+                        <span class="tag">Game Collection</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+                    <p>विविध गेम प्रोजेक्ट्स आणि डेमो — आकर्षक UI व मोबाइल-फ्रेंडली डिझाइन.</p>
+                    <a class="btn" href="https://arman94081.github.io/best-game/" target="_blank" rel="noopener">
+                        <i class="fas fa-play-circle"></i> पाहा
+                    </a>
+                </article>
+                
+                <article class="card animate">
+                    <h3>Indian Constitution AI Chatbot</h3>
+                    <div class="tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Chatbot</span>
+                        <span class="tag">Constitution</span>
+                    </div>
+                    <p>भारतीय राज्यघटनेविषयी माहिती देणारा AI चॅटबॉट. कृत्रिम बुद्धिमत्तेचा वापर.</p>
+                    <a class="btn" href="https://arman94081.github.io/indian-constitution-ai-chatbot/" target="_blank" rel="noopener">
+                        <i class="fas fa-robot"></i> चॅटबॉट वापरा
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="avatar">
+                <img src="arman.jpg" alt="Arman Shaikh - Web Developer">
+            </div>
+            <div>
+                <h2 style="color: var(--accent); margin-bottom: 20px;">माझ्याबद्दल</h2>
+                <p class="lead">मी Arman Shaikh — छोटे व्यवसाय, विद्यार्थ्यांसाठी आणि प्रोजेक्ट्ससाठी attractive, responsive वेबसाईट तयार करतो.</p>
+                <div class="contact" style="background: none; padding: 0; box-shadow: none; text-align: left;">
+                    <p><strong>सेवा:</strong> लँडिंग पेज, पोर्टफोलिओ, ई-कॉमर्स मिनी साईट, गेम पेजेस, AI चॅटबॉट इ.</p>
+                    <p><strong>किंमत:</strong> ₹150–₹750 (प्रोजेक्टवर अवलंबून)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>संपर्क साधा</h2>
+            <p class="lead">तुमची वेबसाईट तयार करायची आहे का? खालील माध्यमांनी संपर्क साधा.</p>
+            
+            <div class="contact-options">
+                <div class="contact-option">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                    <a href="mailto:shaikharmanking25s@gmail.com" style="color: var(--accent); margin-top: 5px; font-size: 12px;">shaikharmanking25s@gmail.com</a>
+                </div>
+                
+                <div class="contact-option">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                    <a href="https://wa.me/+918788334863" target="_blank" rel="noopener" style="color: var(--accent); margin-top: 5px; font-size: 12px;">+91 8788334863</a>
+                </div>
+                
+                <div class="contact-option">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                    <a href="https://www.instagram.com/mr_arman_2030s/" target="_blank" rel="noopener" style="color: var(--accent); margin-top: 5px; font-size: 12px;">@mr_arman_2030s</a>
+                </div>
+            </div>
+            
+            <a class="btn" href="mailto:shaikharmanking25s@gmail.com?subject=Website%20Request&body=नमस्कार%20Arman,%0Aमाझे%20नाव:%0Aसाईटचा%20प्रकार:%0Aब्रीफ:%0Aधन्यवाद" style="margin-top: 30px;">
+                <i class="fas fa-code"></i> साइट बनवा
+            </a>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="https://www.instagram.com/mr_arman_2030s/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+918788334863" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:shaikharmanking25s@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            © <span id="year"></span> Arman Shaikh · सर्व हक्क राखीव
+        </footer>
     </div>
 
-    <section id="sites" class="grid" aria-label="My sites">
-      <article class="card">
-        <h3>Catch the Ball — Game</h3>
-        <p>मजेशीर Canvas गेम — JavaScript वापरून तयार. Play करा आणि share करा.</p>
-        <a class="btn" href="https://arman94081.github.io/game/" target="_blank" rel="noopener">पाहा</a>
-      </article>
-
-      <article class="card">
-        <h3>Best-game</h3>
-        <p>विविध गेम प्रोजेक्ट्स आणि डेमो — आकर्षक UI व मोबाइल-फ्रेंडली डिझाइन.</p>
-        <a class="btn" href="https://arman94081.github.io/best-game/" target="_blank" rel="noopener">पाहा</a>
-      </article>
-
-     
-    </section>
-
-    <section id="about" class="about">
-      <div class="avatar">
-       
-        <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background
-          -color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="arman.jpg" width="282" height="282">
-      </div>
-      <div>
-        <h2>माझ्याबद्दल</h2>
-        <p class="lead">मी Arman Shaikh — छोटे व्यवसाय, विद्यार्थ्यांसाठी आणि प्रोजेक्ट्ससाठी attractive, responsive वेबसाईट तयार करतो.</p>
-        <div class="contact">
-          <p><strong>सेवा:</strong> लँडिंग पेज, पोर्टफोलिओ, ई-कॉमर्स मिनी साईट, गेम पेजेस इ.</p>
-          <p><strong>किंमत:</strong> ₹150–₹750 (प्रोजेक्टवर अवलंबून)</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="card">
-      <h2>Contact — संपर्क</h2>
-      <p class="lead">तुमची वेबसाईट तयार करायची आहे का? खालील माध्यमांनी संपर्क साधा.</p>
-      <p><strong>Email:</strong> <a href="mailto:shaikharmanking25s@gmail.com">shaikharmanking25s@gmail.com</a></p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/+918788334863" target="_blank" rel="noopener">+91 8788334863</a></p>
-      <a class="btn" href="mailto:arman@example.com?subject=Website%20Request&body=नमस्कार%20Arman,%0Aमाझे%20नाव:%0Aसाईटचा%20प्रकार:%0Aब्रीफ:%0Aधन्यवाद">साइट बनवा</a>
-    </section>
-
-    <footer>
-      © <span id="year"></span> Arman Shaikh ·
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- Particles.js for background animation -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Typing animation
+        const texts = ['वेब डेवलपर', 'डिझाईन एक्स्पर्ट', 'AI चॅटबॉट तज्ञ'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+        
+        function type() {
+            const currentText = texts[textIndex];
+            const typingElement = document.getElementById('typing-text');
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingDelay = 50;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingDelay = 100;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typingDelay = 1000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typingDelay = 500;
+            }
+            
+            setTimeout(type, typingDelay);
+        }
+        
+        // Initialize typing animation
+        document.addEventListener('DOMContentLoaded', type);
+        
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#5eead4" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#5eead4",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+    </script>
 </body>
 </html>
-
-
