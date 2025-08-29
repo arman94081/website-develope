@@ -13,6 +13,7 @@
             --accent: #5eead4;
             --accent2: #60a5fa;
             --accent3: #f472b6;
+            --accent4: #f59e0b;
             --text: #e8eef8;
             --gradient: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
         }
@@ -199,6 +200,10 @@
             color: var(--accent);
         }
         
+        .card.masale h3 {
+            color: var(--accent4);
+        }
+        
         .card p {
             color: var(--muted);
             margin: 0 0 20px 0;
@@ -220,6 +225,11 @@
             font-size: 12px;
         }
         
+        .tag.masale {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+        
         .btn {
             display: inline-flex;
             align-items: center;
@@ -237,6 +247,10 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn.masale {
+            background: linear-gradient(135deg, var(--accent4), #f97316);
         }
         
         /* About section */
@@ -509,6 +523,19 @@
                         <i class="fas fa-robot"></i> चॅटबॉट वापरा
                     </a>
                 </article>
+                
+                <article class="card animate masale">
+                    <h3>मसाले — Spices Shop</h3>
+                    <div class="tags">
+                        <span class="tag masale">E-Commerce</span>
+                        <span class="tag masale">Spices</span>
+                        <span class="tag masale">Shopping</span>
+                    </div>
+                    <p>शुद्ध आणि नैसर्गिक मसाल्यांची ऑनलाईन दुकान. उत्तम quality, सर्व प्रकारचे मसाले.</p>
+                    <a class="btn masale" href="https://arman94081.github.io/masale/" target="_blank" rel="noopener">
+                        <i class="fas fa-shopping-cart"></i> मसाले खरेदी करा
+                    </a>
+                </article>
             </div>
         </section>
 
@@ -573,7 +600,7 @@
         document.getElementById('year').textContent = new Date().getFullYear();
         
         // Typing animation
-        const texts = ['वेब डेवलपर', 'डिझाईन एक्स्पर्ट', 'AI चॅटबॉट तज्ञ'];
+        const texts = ['वेब डेवलपर', 'डिझाईन एक्स्पर्ट', 'AI चॅटबॉट तज्ञ', 'ई-कॉमर्स एक्स्पर्ट'];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
